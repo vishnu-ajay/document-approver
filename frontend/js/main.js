@@ -1,5 +1,3 @@
-import config from './config.js';
-
 document.addEventListener('DOMContentLoaded', async () => {
     const urlId = getUrlParameter('urlId');
     if (!urlId) {
@@ -13,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log('Device Identifier (acting as MAC Address):', deviceId);
 
     try {
-        const response = await fetch(`${config.backendUrl}/access-url`, {
+        const response = await fetch('http://10.132.179.208:3000/access-url', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ urlId, macAddress: deviceId })
@@ -40,7 +38,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Helper functions remain the same...
 // Function to get or create a unique device identifier
 function getDeviceId() {
     // Check if a device ID already exists in localStorage
